@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'church',
+    podModulePrefix: 'church/pods',
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
@@ -24,11 +25,8 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.apiBaseUrl = 'http://localhost:1337';
+    ENV.appUrl = 'http://localhost:4200/';
   }
 
   if (environment === 'test') {
@@ -45,6 +43,23 @@ module.exports = function(environment) {
   if (environment === 'production') {
 
   }
+
+  ENV.authenticationURL = ENV.apiBaseUrl + '/login';
+  ENV['ember-simple-auth'] = {
+    authenticationRoute: 'login',
+    authorizer: 'authorizer:token',
+    routeAfterAuthentication: 'home',
+    routeIfAlreadyAuthenticated: 'home',
+    crossOriginWhitelist: [ENV.authenticationURL]
+  };
+  ENV['ember-simple-auth-token'] = {
+    serverTokenEndpoint: ENV.authenticationURL,
+    identificationField: 'email',
+    passwordField: 'password',
+    tokenPropertyName: 'token',
+    authorizationPrefix: 'Bearer ',
+    authorizationHeaderName: 'Authorization'
+  };
 
   return ENV;
 };

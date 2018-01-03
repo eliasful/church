@@ -1,0 +1,11 @@
+{{#if session.isAuthenticated}}
+  <div id="base">
+    <div class="offcanvas ">
+    </div>
+    <div id="content">
+      {{outlet}}
+    </div>
+  </div>
+{{else}}
+  {{outlet}}
+{{/if}}
