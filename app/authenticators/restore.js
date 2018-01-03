@@ -1,5 +1,4 @@
 import Ember from 'ember';
-// app/authenticators/custom.js
 import Base from 'ember-simple-auth/authenticators/base';
 
 const {

@@ -14,20 +14,8 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   model() {
     var session = this.get('session');
     if (session.get('isAuthenticated')) {
-
-      var userId = session.get('session.content.authenticated.user.id');
-      var company = session.get('session.content.authenticated.user.company');
-
-      return Ember.RSVP.hash({
-        user: this.store.findRecord('user', userId),
-        companyConfiguration: this.store.findRecord('companyConfiguration', company),
-        accessProfileUser: this.get('ajax').request('users/' + userId + '/accessProfiles').then((data) => {
-          return data.accessprofile[0];
-        })
-      });
-
+      return null;
     } else {
-      console.log("Application não autenticada");
       return {};
     }
   },

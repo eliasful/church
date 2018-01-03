@@ -1,0 +1,15 @@
+.btn-primary {
+  background: $theme-color;
+  border-color: $theme-color;
+  color: $theme-font;
+
+  &:hover {
+    background: darken($theme-color, 10%);
+    color: darken($theme-font, 10%);
+  }
+
+  &:active, &:focus {
+    background: darken($theme-color, 30%);
+    color: darken($theme-font, 30%)!important;
+  }
+}

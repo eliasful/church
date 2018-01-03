@@ -1,0 +1,50 @@
+<header></header>
+<div class="container login-container">
+  <div class="row justify-content-md-center">
+    <div class="col-lg-5">
+      <form {{action 'save' model on='submit'}} id="form" class="form">
+        <h2 class="text-center font-weight-bold">
+          <i class="fa fa-building"></i> Crie uma nova Igreja
+        </h2>
+        <p class="text-center">Por favor, preencha todas as informações para criar sua conta.</p>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-12">
+              <label for="name">Nome</label> {{input type="text" id="name" class="form-control" value=model.name required=true autofocus=true placeholder="Nome"}}
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-8">
+              <label for="address">Endereço</label> {{input type="text" id="address" class="form-control" value=model.address required=true placeholder="Endereço"}}
+            </div>
+            <div class="col-4">
+              <label for="number">Número</label> {{input type="text" id="number" class="form-control" value=model.number required=true placeholder="Número"}}
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-6">
+              <label>Cidade</label> {{input type="text" class="form-control" value=model.city required=true placeholder="Cidade"}}
+            </div>
+            <div class="col-6">
+              <label>Telefone</label> {{input type="text" class="form-control" value=model.phone required=true placeholder="Telefone"}}
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Criar Igreja</button>
+      </form>
+    </div>
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="col-lg-4">
+      <hr>
+      <div class="text-center text-muted ">
+        Já possuí cadastro?
+        {{#link-to 'login'}}Entrar{{/link-to}}
+      </div>
+    </div>
+  </div>
+</div>
