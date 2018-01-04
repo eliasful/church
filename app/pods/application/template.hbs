@@ -1,6 +1,9 @@
 {{#if session.isAuthenticated}}
   <div class="container-fluid">
     {{application-header}}
+    <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+      {{outlet}}
+    </main>
   </div>
 {{else}}
   {{outlet}}
