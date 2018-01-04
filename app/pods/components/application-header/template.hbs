@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-theme">
+  <a class="navbar-brand" href="#">Church</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <div class="dropdown">
+      <img id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://www.samservicos.com.br/wp-content/uploads/2015/11/sem-imagem-avatar.png" class="rounded-circle" style="width: 50px;height: 50px;">
+      <div class="dropdown-menu text-left" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">
+          <i class="fa fa-sign-out-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+<nav class=" col-2 d-none d-sm-block bg-light sidebar ">
+  <hr>
+  <ul class="nav nav-pills flex-column ">
+    <li class="nav-item ">
+      {{#link-to 'home' class="nav-link py-3" }}
+        <i class="fa fa-home text-nav "></i> Início
+      {{/link-to}}
+    </li>
+    <li class="nav-item ">
+      {{#link-to 'user' class="nav-link py-3" }}
+        <i class="fa fa-user text-nav "></i> Membros
+      {{/link-to}}
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link py-3 " href="# ">
+        <i class="fa fa-users text-nav "></i> Células
+      </a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link py-3 " href="# ">
+        <i class="fa fa-cog text-nav "></i> Configurações
+      </a>
+    </li>
+  </ul>
+</nav>

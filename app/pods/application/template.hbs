@@ -1,10 +1,6 @@
 {{#if session.isAuthenticated}}
-  <div id="base">
-    <div class="offcanvas ">
-    </div>
-    <div id="content">
-      {{outlet}}
-    </div>
+  <div class="container-fluid">
+    {{application-header}}
   </div>
 {{else}}
   {{outlet}}

@@ -17,7 +17,15 @@ module.exports = function(environment) {
         Date: false
       }
     },
-
+    contentSecurityPolicy: {
+      'default-src': "'self' http://localhost:1337 ",
+      'script-src': "'self' 'unsafe-inline' 'unsafe-eval' ",
+      'font-src': "'self' data: use.typekit.net fonts.gstatic.com ",
+      'connect-src': "'self' http://localhost:1337 ",
+      'img-src': "'self'",
+      'style-src': "'self' 'unsafe-inline' static.addtoany.com  use.typekit.net fonts.googleapis.com ",
+      'frame-src': "static.addtoany.com www.google.com"
+    },
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created

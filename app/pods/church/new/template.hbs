@@ -2,15 +2,22 @@
 <div class="container login-container">
   <div class="row justify-content-md-center">
     <div class="col-lg-5">
-      <form {{action 'save' model on='submit'}} id="form" class="form">
+      {{#form-validate model=model save='save' }}
         <h2 class="text-center font-weight-bold">
           <i class="fa fa-building"></i> Crie uma nova Igreja
         </h2>
         <p class="text-center">Por favor, preencha todas as informações para criar sua conta.</p>
+        <p class="font-weight-bold">
+          <i class="fa fa-info-circle"></i> Informações da Igreja
+        </p>
+        <hr>
         <div class="form-group">
           <div class="row">
             <div class="col-12">
-              <label for="name">Nome</label> {{input type="text" id="name" class="form-control" value=model.name required=true autofocus=true placeholder="Nome"}}
+              <label for="name">Nome da Igreja</label> {{input type="text" id="name" class="form-control" value=model.name required=true autofocus=true placeholder="Nome da Igreja"}}
+              <div class="invalid-feedback">
+                Informe o Nome.
+              </div>
             </div>
           </div>
         </div>
@@ -18,9 +25,15 @@
           <div class="row">
             <div class="col-8">
               <label for="address">Endereço</label> {{input type="text" id="address" class="form-control" value=model.address required=true placeholder="Endereço"}}
+              <div class="invalid-feedback">
+                Informe o Endereço.
+              </div>
             </div>
             <div class="col-4">
               <label for="number">Número</label> {{input type="text" id="number" class="form-control" value=model.number required=true placeholder="Número"}}
+              <div class="invalid-feedback">
+                Informe o Número.
+              </div>
             </div>
           </div>
         </div>
@@ -28,14 +41,50 @@
           <div class="row">
             <div class="col-6">
               <label>Cidade</label> {{input type="text" class="form-control" value=model.city required=true placeholder="Cidade"}}
+              <div class="invalid-feedback">
+                Informe a Cidade.
+              </div>
             </div>
             <div class="col-6">
               <label>Telefone</label> {{input type="text" class="form-control" value=model.phone required=true placeholder="Telefone"}}
+              <div class="invalid-feedback">
+                Informe o Telefone.
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="font-weight-bold">
+          <i class="fa fa-user"></i> Informações do Responsável
+        </p>
+        <hr>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-12">
+              <label for="responsible">Nome</label> {{input type="text" id="responsible" class="form-control" value=model.responsible required=true placeholder="Nome"}}
+              <div class="invalid-feedback">
+                Informe o Nome.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-8">
+              <label for="email">Email</label> {{input type="email" id="email" class="form-control" value=model.email required=true placeholder="Email"}}
+              <div class="invalid-feedback">
+                Informe o Email.
+              </div>
+            </div>
+            <div class="col-4">
+              <label for="cpf">CPF</label> {{input type="text" id="cpf" class="form-control" value=model.cpf required=true placeholder="CPF"}}
+              <div class="invalid-feedback">
+                Informe o CPF.
+              </div>
             </div>
           </div>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Criar Igreja</button>
-      </form>
+      {{/form-validate}}
     </div>
   </div>
   <div class="row justify-content-md-center">

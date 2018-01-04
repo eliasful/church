@@ -1,3 +1,11 @@
 $theme-color: lighten(#0074D9, 1%);
-$theme-font: 	#b3dbff;
+$theme-color-hover: darken($theme-color, 10%);
+$theme-color-active: darken($theme-color, 30%);
+$theme-font: #b3dbff;
+$theme-font-hover: darken($theme-font, 10%);
+$theme-font-active: darken($theme-font, 30%);
 $theme-background: #f6f6f6;
+
+.bg-theme {
+  background-color: $theme-color!important;
+}
