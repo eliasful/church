@@ -18,6 +18,7 @@ Router.map(function() {
     this.route('first-user', {
       path: '/primeiro-usuario/:id'
     });
+    this.route('new');
   });
 });
 

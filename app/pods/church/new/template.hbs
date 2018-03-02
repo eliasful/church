@@ -11,89 +11,98 @@
 
       </div>
       <div class="col-md-6">
-        <p class="font-weight-bold">
-          <i class="fa fa-info-circle"></i> Informações da Igreja
-        </p>
-        <hr>
-          <div class="form-group">
-            <div class="row">
-              <div class="col-12">
-                <label for="name">Nome da Igreja</label> {{input type="text" id="name" class="form-control" value=model.name required=true autofocus=true placeholder="Nome da Igreja"}}
-                <div class="invalid-feedback">
-                  Informe o Nome.
+        <div class="card">
+          <div class="card-body">
+            <p class="font-weight-bold">
+              <i class="fa fa-info-circle"></i> Informações da Igreja
+            </p>
+            <hr>
+            <div class="form-group">
+                <div class="row">
+                  <div class="col-12">
+                    <label for="name">Nome da Igreja</label> {{input type="text" id="name" class="form-control" value=model.name required=true autofocus=true placeholder="Nome da Igreja"}}
+                    <div class="invalid-feedback">
+                      Informe o Nome.
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="row">
-              <div class="col-8">
-                <label for="address">Endereço</label> {{input type="text" id="address" class="form-control" value=model.address required=true placeholder="Endereço"}}
-                <div class="invalid-feedback">
-                  Informe o Endereço.
+            <div class="form-group">
+                <div class="row">
+                  <div class="col-8">
+                    <label for="address">Endereço</label> {{input type="text" id="address" class="form-control" value=model.address required=true placeholder="Endereço"}}
+                    <div class="invalid-feedback">
+                      Informe o Endereço.
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <label for="number">Número</label> {{input type="text" id="number" class="form-control" value=model.number required=true placeholder="Número"}}
+                    <div class="invalid-feedback">
+                      Informe o Número.
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="col-4">
-                <label for="number">Número</label> {{input type="text" id="number" class="form-control" value=model.number required=true placeholder="Número"}}
-                <div class="invalid-feedback">
-                  Informe o Número.
+            <div class="form-group">
+                <div class="row">
+                  <div class="col-6">
+                    <label>Cidade</label>
+                    {{input type="text" class="form-control" value=model.city required=true placeholder="Cidade"}}
+                    <div class="invalid-feedback">
+                      Informe a Cidade.
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <label>Telefone</label>
+                    {{one-way-input-mask model.phone mask="(99) 9 9999-9999" update=(action (mut model.phone)) class="form-control" required=true placeholder="Telefone"}}
+                    <div class="invalid-feedback">
+                      Informe o Telefone.
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="row">
-              <div class="col-6">
-                <label>Cidade</label>
-                {{input type="text" class="form-control" value=model.city required=true placeholder="Cidade"}}
-                <div class="invalid-feedback">
-                  Informe a Cidade.
-                </div>
-              </div>
-              <div class="col-6">
-                <label>Telefone</label>
-                {{one-way-input-mask model.phone mask="(99) 9 9999-9999" update=(action (mut model.phone)) class="form-control" required=true placeholder="Telefone"}}
-                <div class="invalid-feedback">
-                  Informe o Telefone.
-                </div>
-              </div>
-            </div>
-          </div>
-      </div>
-      <div class="col-md-6">
-        <p class="font-weight-bold">
-          <i class="fa fa-user"></i> Informações do Responsável
-        </p>
-        <hr>
-        <div class="form-group">
-          <div class="row">
-            <div class="col-12">
-              <label for="responsible">Nome</label> {{input type="text" id="responsible" class="form-control" value=model.responsible required=true placeholder="Nome"}}
-              <div class="invalid-feedback">
-                Informe o Nome.
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="row">
-            <div class="col-8">
-              <label for="email">Email</label> {{input type="email" id="email" class="form-control" value=model.email required=true placeholder="Email"}}
-              <div class="invalid-feedback">
-                Informe o Email.
-              </div>
-            </div>
-            <div class="col-4">
-              <label for="cpf">CPF</label>
-              {{one-way-input-mask model.cpf mask='999.999.999-99' update=(action (mut model.cpf)) class="form-control" id="cpf" required=true placeholder="CPF"}}
-              <div class="invalid-feedback">
-                Informe o CPF.
-              </div>
-            </div>
           </div>
         </div>
       </div>
       <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <p class="font-weight-bold">
+              <i class="fa fa-user"></i> Informações do Responsável
+            </p>
+            <hr>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-12">
+                  <label for="responsible">Nome</label> {{input type="text" id="responsible" class="form-control" value=model.responsible required=true placeholder="Nome"}}
+                  <div class="invalid-feedback">
+                    Informe o Nome.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-8">
+                  <label for="email">Email</label> {{input type="email" id="email" class="form-control" value=model.email required=true placeholder="Email"}}
+                  <div class="invalid-feedback">
+                    Informe o Email.
+                  </div>
+                </div>
+                <div class="col-4">
+                  <label for="cpf">CPF</label>
+                  {{one-way-input-mask model.cpf mask='999.999.999-99' update=(action (mut model.cpf)) class="form-control" id="cpf" required=true placeholder="CPF"}}
+                  <div class="invalid-feedback">
+                    Informe o CPF.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <br>
         <button type="submit" class="btn btn-primary btn-block">Criar Igreja</button>
       </div>
     </div>
