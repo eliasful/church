@@ -1,1 +1,21 @@
-{{yield}}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      {{#link-to 'home'}}
+        Início
+      {{/link-to}}
+    </li>
+    <li class="breadcrumb-item">
+      {{#link-to 'user'}}
+        Membros
+      {{/link-to}}
+    </li>
+    <li class="breadcrumb-item active">Novo Membro</li>
+  </ol>
+</nav>
+<div class="row">
+  <div class="col-lg-9 col-md-8">
+    <h2>Novo Membro</h2>
+    <p>Cadastre um novo membro na sua igreja.</p>
+  </div>
+</div>

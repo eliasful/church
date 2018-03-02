@@ -14,9 +14,9 @@
     <p>Lista de todos os membros da sua igreja.</p>
   </div>
   <div class="col-lg-3 col-md-4 text-center">
-    <button type="button" class="btn btn-primary btn-block btn-user">
+    {{#link-to 'user.new' class="btn btn-primary btn-block btn-user"}}
       <i class="fa fa-plus"></i> Adicionar Membro
-    </button>
+    {{/link-to}}
   </div>
 </div>
 <div class="table-responsive">
