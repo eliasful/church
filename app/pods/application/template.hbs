@@ -1,6 +1,6 @@
 {{#if session.isAuthenticated}}
   <div class="container-fluid">
-    {{application-header}}
+    {{application-header logout="logout" user=model.user}}
     <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
       {{outlet}}
     </main>

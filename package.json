@@ -34,13 +34,16 @@
     "ember-cli-uglify": "^1.2.0",
     "ember-data": "^2.10.0",
     "ember-export-application-global": "^1.0.5",
+    "ember-inputmask": "0.6.5",
     "ember-load-initializers": "^0.5.1",
     "ember-resolver": "^2.0.3",
     "ember-simple-auth": "1.4.2",
     "ember-simple-auth-token": "3.0.0",
+    "ember-truth-helpers": "2.0.0",
     "ember-welcome-page": "^1.0.3",
     "loader.js": "^4.0.10",
-    "sweetalert": "^2.1.0"
+    "sweetalert": "^2.1.0",
+    "talentrh-components": "talentrh/talentrh-components#dev"
   },
   "engines": {
     "node": ">= 0.12.0"

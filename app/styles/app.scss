@@ -6,7 +6,11 @@
 
 body {
   background-color: $theme-background;
-  padding-top: 4.5rem;
+}
+
+
+main {
+  margin-top: 60px;
 }
 
 /*
@@ -72,4 +76,9 @@ body {
 .breadcrumb {
   background-color: transparent;
   padding-left: 0;
+}
+
+.btn-outline-dark,
+.btn-outline-danger {
+  border: 0;
 }
