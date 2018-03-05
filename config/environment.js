@@ -26,6 +26,10 @@ module.exports = function(environment) {
       'style-src': "'self' 'unsafe-inline' static.addtoany.com  use.typekit.net fonts.googleapis.com ",
       'frame-src': "static.addtoany.com www.google.com"
     },
+    googleMap: {
+      apiKey: 'AIzaSyDIiTwKIr5-_HGOXLA5fu2mgqvhthjWNH4',
+      libraries: ['drawing']
+    },
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created

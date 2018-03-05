@@ -25,7 +25,7 @@
       </div>
       {{#form-validate model=model save='save'}}
         <div class="card-body tab-content">
-          <div class="tab-pane active" id="principal" role="tabpanel" aria-labelledby="nav-home-tab" aria-expanded="true">
+          <div class="tab-pane " id="principal" role="tabpanel" aria-labelledby="nav-home-tab" aria-expanded="true">
             <div class="row">
               <div class="col-12">
                 <blockquote class="blockquote">
@@ -80,7 +80,7 @@
               </div>
             </div>
           </div>
-          <div class="tab-pane" id="address" role="tabpanel" aria-labelledby="nav-home-tab" aria-expanded="true">
+          <div class="tab-pane active" id="address" role="tabpanel" aria-labelledby="nav-home-tab" aria-expanded="true">
             <div class="row">
               <div class="col-12">
                 <blockquote class="blockquote">
@@ -126,7 +126,7 @@
                   {{input type="text" value=model.neighborhood class="form-control" placeholder="ex.: Centro"}}
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <div class="form-group">
                   <label>Cidade</label>
                   {{input type="text" value=model.city class="form-control" placeholder="ex.: Curitíba"}}
@@ -136,6 +136,21 @@
                 <div class="form-group">
                   <label>Estado</label>
                   {{input type="text" value=model.state class="form-control" placeholder="ex.: Paraná"}}
+                </div>
+              </div>
+              <div class="col-md-1">
+                <div class="form-group">
+                  <label>Procurar</label>
+                  <button class="btn btn-primary" type="button" name="button"{{action 'find'}}>
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  {{g-maps name="my-map" lat=lat lng=lng zoom=zoom click="add" markers=markers}}
                 </div>
               </div>
             </div>

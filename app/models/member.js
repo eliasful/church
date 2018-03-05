@@ -28,5 +28,7 @@ export default DS.Model.extend({
   married: DS.attr('date'),
   father: DS.belongsTo('member', { inverse: null }),
   mother: DS.belongsTo('member', { inverse: null }),
-  children: DS.attr('string')
+  children: DS.attr('string'),
+  lat: DS.attr('string'),
+  lng: DS.attr('string')
 });
