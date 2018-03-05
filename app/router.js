@@ -20,6 +20,12 @@ Router.map(function() {
     });
     this.route('new');
   });
+  this.route('member', function() {
+    this.route('new');
+    this.route('edit', {
+      path: 'edit/:id'
+    });
+  });
 });
 
 export default Router;

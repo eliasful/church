@@ -1,0 +1,310 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <nav class="nav nav-tabs card-header-tabs" id="nav-tab" role="tablist">
+          <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#principal" role="tab" aria-controls="home" aria-expanded="true">
+            Dados Principais
+          </a>
+          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#address" role="tab" aria-controls="profile" aria-expanded="false">
+            Endereços
+          </a>
+          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#personal" role="tab" aria-controls="profile" aria-expanded="false">
+            Dados Pessoais
+          </a>
+          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#documment" role="tab" aria-controls="profile" aria-expanded="false">
+            Documentos
+          </a>
+          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#charges" role="tab" aria-controls="profile" aria-expanded="false">
+            Cargos
+          </a>
+          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#family" role="tab" aria-controls="profile" aria-expanded="false">
+            Familiar
+          </a>
+        </nav>
+      </div>
+      {{#form-validate model=model save='save'}}
+        <div class="card-body tab-content">
+          <div class="tab-pane active" id="principal" role="tabpanel" aria-labelledby="nav-home-tab" aria-expanded="true">
+            <div class="row">
+              <div class="col-12">
+                <blockquote class="blockquote">
+                  <p class="mb-0">Dados Principais</p>
+                  <small class="text-muted">Principais informações do membro em questão</small>
+                </blockquote>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-7">
+                <div class="form-group">
+                  <label for="name">Nome Completo</label>
+                  {{input type="text" class="form-control" value=model.name required=true autofocus=true placeholder="ex.: João da Silva"}}
+                  <div class="invalid-feedback">
+                    Informe o Nome.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label>Idade</label>
+                  {{input type="number" class="form-control" value=model.age placeholder="ex.: 28"}}
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>Gênero</label>
+                  {{#input-select selected=model.gender}}
+                    <option disabled selected>Gênero</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Feminino</option>
+                  {{/input-select}}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Celular</label>
+                  {{one-way-input-mask model.celPhone mask="(99) 9 9999-9999" update=(action (mut model.celPhone)) class="form-control" placeholder="ex.: (46) 9 1234-5678"}}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Telefone</label>
+                  {{one-way-input-mask model.phone mask="(99) 9999-9999" update=(action (mut model.phone)) class="form-control" placeholder="ex.: (46) 3000-4000"}}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>E-mail</label>
+                  {{input type="email" class="form-control" value=model.email placeholder="ex.: joao@email.com"}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="address" role="tabpanel" aria-labelledby="nav-home-tab" aria-expanded="true">
+            <div class="row">
+              <div class="col-12">
+                <blockquote class="blockquote">
+                  <p class="mb-0">Endereços</p>
+                  <small class="text-muted">Endereços do membro em questão</small>
+                </blockquote>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label>CEP</label>
+                  {{input-cep
+                    value=model.cep
+                    address=model.address
+                    neighborhood=model.neighborhood
+                    city=model.city
+                    state=model.state
+                  }}
+                </div>
+              </div>
+              <div class="col-md-7">
+                <div class="form-group">
+                  <label>Endereço</label>
+                  {{input type="text" value=model.address class="form-control" placeholder="ex.: Rua das Violetas"}}
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>Número</label>
+                  {{input type="number" min="0" value=model.number class="form-control" placeholder="ex.: 1234"}}
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>Complemento</label>
+                  {{input type="text" value=model.complement class="form-control" placeholder="ex.: Ap. 123"}}
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>Bairro</label>
+                  {{input type="text" value=model.neighborhood class="form-control" placeholder="ex.: Centro"}}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Cidade</label>
+                  {{input type="text" value=model.city class="form-control" placeholder="ex.: Curitíba"}}
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label>Estado</label>
+                  {{input type="text" value=model.state class="form-control" placeholder="ex.: Paraná"}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="personal" role="tabpanel" aria-labelledby="nav-home-tab" aria-expanded="true">
+            <div class="row">
+              <div class="col-12">
+                <blockquote class="blockquote">
+                  <p class="mb-0">Dados Pessoais</p>
+                  <small class="text-muted">Dados Pessoais do membro em questão</small>
+                </blockquote>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Data de Nascimento</label>
+                  {{one-way-input-mask model.birthday mask="99/99/9999" update=(action (mut model.birthday)) class="form-control" placeholder="ex.: 01/01/1990"}}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Estado Cívil</label>
+                  {{#input-select selected=model.civilStatus}}
+                    <option value="S">Solteiro</option>
+                    <option value="C">Casado</option>
+                    <option value="D">Divorciado</option>
+                    <option value="V">Viúvo</option>
+                  {{/input-select}}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Escolaridade</label>
+                  {{#input-select selected=model.schooling}}
+                    <option value="1">Fundamental - Incompleto</option>
+                    <option value="2">Fundamental - Completo</option>
+                    <option value="3">Médio - Incompleto</option>
+                    <option value="4">Médio - Completo</option>
+                    <option value="5">Superior - Incompleto</option>
+                    <option value="6">Superior - Completo</option>
+                  {{/input-select}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="documment" role="tabpanel" aria-labelledby="nav-home-tab" aria-expanded="true">
+            <div class="row">
+              <div class="col-12">
+                <blockquote class="blockquote">
+                  <p class="mb-0">Documentos</p>
+                  <small class="text-muted">Documentos do membro em questão</small>
+                </blockquote>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>RG</label>
+                  {{one-way-input-mask model.rg mask="99.999.999-9" update=(action (mut model.rg)) class="form-control" placeholder="ex.: 12.345.678-9"}}
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>CPF</label>
+                  {{one-way-input-mask model.cpf mask="999.999.999-99" update=(action (mut model.cpf)) class="form-control" placeholder="ex.: 012.345.678-90"}}
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>Natural de</label>
+                  {{input type="text" value=model.natural class="form-control" placeholder="ex.: Pato Branco"}}
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>Nacionalidade</label>
+                  {{input type="text" value=model.nationality class="form-control" placeholder="ex.: Brasileiro"}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="charges" role="tabpanel" aria-labelledby="nav-home-tab" aria-expanded="true">
+            <div class="row">
+              <div class="col-12">
+                <blockquote class="blockquote">
+                  <p class="mb-0">Cargos</p>
+                  <small class="text-muted">Cargos do membro em questão</small>
+                </blockquote>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Cargo</label>
+                  {{#input-select selected=model.charge}}
+                    <option value="1">Pastor Presidente</option>
+                    <option value="2">Pastor Auxiliar</option>
+                    <option value="3">Lider de Rede</option>
+                    <option value="4">Lider de Célula</option>
+                  {{/input-select}}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Data da Ordenação</label>
+                  {{one-way-input-mask model.ordination mask="99/99/9999" update=(action (mut model.ordination)) class="form-control" placeholder="ex.: 02/02/2000"}}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Data do Batismo</label>
+                  {{one-way-input-mask model.baptism mask="99/99/9999" update=(action (mut model.baptism)) class="form-control" placeholder="ex.: 02/02/2000"}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="family" role="tabpanel" aria-labelledby="nav-home-tab" aria-expanded="true">
+            <div class="row">
+              <div class="col-12">
+                <blockquote class="blockquote">
+                  <p class="mb-0">Familiar</p>
+                  <small class="text-muted">Ddaos da família de membro em questão</small>
+                </blockquote>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>Conjuge</label>
+                  {{input-select-each model="member" selected=model.hisWife}}
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>Data do Casamento</label>
+                  {{one-way-input-mask model.married mask="99/99/9999" update=(action (mut model.married)) class="form-control" placeholder="ex.: 01/01/2010"}}
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>Pai</label>
+                  {{input-select-each model="member" selected=model.father}}
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>Mãe</label>
+                  {{input-select-each model="member" selected=model.mother}}
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Filhos</label>
+                  {{input type="text" class="form-control" value=model.children placeholder="ex.: Pedro, Maria, Flávio"}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pull-right mb-10">
+            {{#link-to 'member' class="btn btn-light"}}
+              <i class="fa fa-arrow-left"></i> Voltar
+            {{/link-to}}
+            <button class="btn btn-primary" type="submit" name="button">
+              <i class="fa fa-save"></i> Salvar
+            </button>
+          </div>
+        </div>
+      {{/form-validate}}
+    </div>
+  </div>
+</div>
