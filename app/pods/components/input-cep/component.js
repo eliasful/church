@@ -27,6 +27,7 @@ export default Ember.Component.extend({
       this.set('city', cep.localidade);
       this.set('state', cep.uf);
       this.set('neighborhood', cep.bairro);
+      this.set('value', cep.cep);
     });
   }
 });

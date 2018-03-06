@@ -26,10 +26,6 @@ module.exports = function(environment) {
       'style-src': "'self' 'unsafe-inline' static.addtoany.com  use.typekit.net fonts.googleapis.com ",
       'frame-src': "static.addtoany.com www.google.com"
     },
-    googleMap: {
-      apiKey: 'AIzaSyDIiTwKIr5-_HGOXLA5fu2mgqvhthjWNH4',
-      libraries: ['drawing']
-    },
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
@@ -72,6 +68,19 @@ module.exports = function(environment) {
     authorizationPrefix: 'Bearer ',
     authorizationHeaderName: 'Authorization',
     refreshAccessTokens: false
+  };
+  ENV['ember-google-maps'] = {
+    key: 'AIzaSyCG4WK7s0CCM2Dzd9mkPAMOW5-0fYi9biY', // Using .env files in this example
+    language: 'pt-br',
+    region: 'br',
+    protocol: 'https',
+    version: '3.31',
+    // client: undefined,
+    // channel: undefined,
+    // baseUrl: '//maps.googleapis.com/maps/api/js'
+  };
+  ENV.googleMap = {
+    apiKey: 'AIzaSyCG4WK7s0CCM2Dzd9mkPAMOW5-0fYi9biY'
   };
 
   return ENV;

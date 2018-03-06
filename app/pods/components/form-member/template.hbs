@@ -6,7 +6,7 @@
           <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#principal" role="tab" aria-controls="home" aria-expanded="true">
             Dados Principais
           </a>
-          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#address" role="tab" aria-controls="profile" aria-expanded="false">
+          <a {{action 'updateMap'}} class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#address" role="tab" aria-controls="profile" aria-expanded="false">
             Endereços
           </a>
           <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#personal" role="tab" aria-controls="profile" aria-expanded="false">
@@ -25,7 +25,7 @@
       </div>
       {{#form-validate model=model save='save'}}
         <div class="card-body tab-content">
-          <div class="tab-pane " id="principal" role="tabpanel" aria-labelledby="nav-home-tab" aria-expanded="true">
+          <div class="tab-pane active" id="principal" role="tabpanel" aria-labelledby="nav-home-tab" aria-expanded="true">
             <div class="row">
               <div class="col-12">
                 <blockquote class="blockquote">
@@ -80,7 +80,7 @@
               </div>
             </div>
           </div>
-          <div class="tab-pane active" id="address" role="tabpanel" aria-labelledby="nav-home-tab" aria-expanded="true">
+          <div class="tab-pane" id="address" role="tabpanel" aria-labelledby="nav-home-tab" aria-expanded="true">
             <div class="row">
               <div class="col-12">
                 <blockquote class="blockquote">
@@ -150,7 +150,16 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  {{g-maps name="my-map" lat=lat lng=lng zoom=zoom click="add" markers=markers}}
+                  {{#g-map lat=center.lat lng=center.lng zoom=zoom onClick=(action "add") onLoad=(action "onLoad")
+                    zoomControlOptions=(hash position=google.maps.ControlPosition.LEFT_CENTER) as |g|}}
+                    {{#each markers as |l|}}
+                      {{g.marker
+                        lat=l.lat
+                        lng=l.lng
+                        draggable=true
+                        onDragend=(action "add")}}
+                    {{/each}}
+                  {{/g-map}}
                 </div>
               </div>
             </div>
@@ -168,7 +177,7 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Data de Nascimento</label>
-                  {{one-way-input-mask model.birthday mask="99/99/9999" update=(action (mut model.birthday)) class="form-control" placeholder="ex.: 01/01/1990"}}
+                  {{input-date value=model.birthday placeholder="ex.: 01/01/1990"}}
                 </div>
               </div>
               <div class="col-md-4">
@@ -257,13 +266,13 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Data da Ordenação</label>
-                  {{one-way-input-mask model.ordination mask="99/99/9999" update=(action (mut model.ordination)) class="form-control" placeholder="ex.: 02/02/2000"}}
+                  {{input-date value=model.ordination placeholder="ex.: 01/01/1990"}}
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Data do Batismo</label>
-                  {{one-way-input-mask model.baptism mask="99/99/9999" update=(action (mut model.baptism)) class="form-control" placeholder="ex.: 02/02/2000"}}
+                  {{input-date value=model.baptism placeholder="ex.: 01/01/1990"}}
                 </div>
               </div>
             </div>
@@ -287,7 +296,7 @@
               <div class="col-md-3">
                 <div class="form-group">
                   <label>Data do Casamento</label>
-                  {{one-way-input-mask model.married mask="99/99/9999" update=(action (mut model.married)) class="form-control" placeholder="ex.: 01/01/2010"}}
+                  {{input-date value=model.married placeholder="ex.: 01/01/1990"}}
                 </div>
               </div>
               <div class="col-md-3">
