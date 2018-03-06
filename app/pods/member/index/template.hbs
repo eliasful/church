@@ -11,60 +11,83 @@
 <div class="row">
   <div class="col-lg-9 col-md-8">
     <h2>Membros</h2>
-    <p>Lista de todos os membros da sua igreja.</p>
-  </div>
-  <div class="col-lg-3 col-md-4 text-center">
-    {{#link-to 'member.new' class="btn btn-primary btn-block btn-user"}}
-      <i class="fa fa-plus"></i> Adicionar Membro
-    {{/link-to}}
+    <p>Lista de todos os membros da sua igreja</p>
   </div>
 </div>
-<div class="card card-body">
-  <div class="table-responsive">
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Nome</th>
-          <th class="text-center">Celular</th>
-          <th class="text-center">Telefone</th>
-          <th>E-mail</th>
-          <th>Endereço</th>
-          <th class="text-right">Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each model as |item|}}
+
+<div class="card">
+  <div class="card-header card-header-options">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-search"></i>
+            </span>
+          </div>
+          {{input type="text" class="form-control" placeholder="Pesquisar..." value=filter}}
+        </div>
+      </div>
+      <div class="col-md-5"></div>
+      <div class="col-md-3">
+        {{#link-to 'member.new' class="btn btn-primary btn-block"}}
+          <i class="fa fa-plus"></i> Adicionar Membro
+        {{/link-to}}
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead>
           <tr>
-            <td>
-              <img id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://www.samservicos.com.br/wp-content/uploads/2015/11/sem-imagem-avatar.png" style="width: 50px;height: 50px;" class="rounded-circle">
-            </td>
-            <td class="align-middle">{{item.name}}</td>
-            <td class="align-middle text-center">{{label-mask value=item.celPhone mask="(99) 9 9999-9999"}}</td>
-            <td class="align-middle text-center">{{item.phone}}</td>
-            <td class="align-middle">{{item.email}}</td>
-            <td class="align-middle">
-              {{#if (and item.address item.number item.neighborhood)}}
-                {{concatenate item.address ', ' item.number ' - ' item.neighborhood}}
-              {{else}}
-                {{item.address}}
-              {{/if}}
-            </td>
-            <td class="text-right align-middle">
-              {{#link-to 'member.edit' item  class="btn btn-outline-dark btn-sm"}}
-                <i class="fa fa-edit"></i>
-              {{/link-to}}
-              <button {{action 'remove' item}} type="button" class="btn btn-outline-danger btn-sm">
-                <i class="fa fa-trash"></i>
-              </button>
-            </td>
+            <th>#</th>
+            <th>Nome</th>
+            <th class="text-center">Celular</th>
+            <th>E-mail</th>
+            <th>Endereço</th>
+            <th class="text-right">Ações</th>
           </tr>
-        {{else}}
-          <tr>
-            <td colspan="10" class="text-center">Nenhum Registro Encontrado</td>
-          </tr>
-        {{/each}}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {{#each listFilter as |item|}}
+            <tr>
+              <td>
+                <img id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://www.samservicos.com.br/wp-content/uploads/2015/11/sem-imagem-avatar.png" style="width: 50px;height: 50px;" class="rounded-circle">
+              </td>
+              <td class="align-middle">{{item.name}}</td>
+              <td class="align-middle text-center">{{label-mask value=item.celPhone mask="(99) 9 9999-9999"}}</td>
+              <td class="align-middle">{{item.email}}</td>
+              <td class="align-middle">
+                {{#if item.address}}
+                  {{item.address}}
+                {{/if}}
+                {{#if item.number}}
+                  , {{item.number}}
+                {{/if}}
+                {{#if item.neighborhood}}
+                  - {{item.neighborhood}}
+                {{/if}}
+                {{#if item.city}}
+                  - {{item.city}}
+                {{/if}}
+              </td>
+              <td class="text-right align-middle">
+                {{#link-to 'member.edit' item  class="btn btn-outline-dark btn-sm"}}
+                  <i class="fa fa-edit"></i>
+                {{/link-to}}
+                <button {{action 'remove' item}} type="button" class="btn btn-outline-danger btn-sm">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          {{else}}
+            <tr>
+              <td colspan="10" class="text-center">Nenhum Registro Encontrado</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
