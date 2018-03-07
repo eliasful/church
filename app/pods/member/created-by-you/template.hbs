@@ -13,7 +13,7 @@
         <div class="card">
           <div class="card-body">
             <p class="font-weight-bold">
-              <i class="fa fa-file"></i> Informações do Pessoais
+              <i class="fa fa-file"></i> Informações Pessoais
             </p>
             <hr>
             <div class="row">
@@ -26,7 +26,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-7">
+              <div class="col-md-6">
                 <div class="form-group">
                   <label>Celular</label>
                   {{one-way-input-mask model.celPhone mask="(99) 9 9999-9999" update=(action (mut model.celPhone)) class="form-control" required=true placeholder="ex.: (12) 3 4567-8910"}}
@@ -35,12 +35,12 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-5">
+              <div class="col-md-6">
                 <div class="form-group">
-                  <label>CPF</label>
-                  {{one-way-input-mask model.cpf mask="999.999.999-99" update=(action (mut model.cpf)) class="form-control" required=true placeholder="ex.: 123.456.789-00"}}
+                  <label>Telefone</label>
+                  {{one-way-input-mask model.phone mask="(99) 9999-9999" update=(action (mut model.phone)) class="form-control" required=true placeholder="ex.: (12) 3456-7891"}}
                   <div class="invalid-feedback">
-                    Informe o CPF.
+                    Informe o Telefone.
                   </div>
                 </div>
               </div>
