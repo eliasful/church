@@ -1,0 +1,37 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      {{#link-to 'home'}}
+        Início
+      {{/link-to}}
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Configurações</li>
+  </ol>
+</nav>
+<div class="row">
+  <div class="col-lg-9 col-md-8">
+    <h2>Configurações</h2>
+    <p>Cadastros e utilidades necessárias para o uso do sistema</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="alert alert-secondary" role="alert">
+      <div class="form-group">
+        <label><b>Link para Cadastro</b></label>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend" title="Copiar" {{action 'copy'}}>
+            <span class="input-group-text">
+              <a href="#">
+                <i class="fa fa-copy"></i>
+              </a>
+            </span>
+          </div>
+          <input type="text" id="url" readonly
+          value="{{app-base}}member/created-by-you/{{model.user.church.hash}}"
+          class="form-control">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

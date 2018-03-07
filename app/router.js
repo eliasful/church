@@ -25,7 +25,12 @@ Router.map(function() {
     this.route('edit', {
       path: 'edit/:id'
     });
+    this.route('created-by-you', {
+      path: 'created-by-you/:key'
+    });
+    this.route('welcome-page');
   });
+  this.route('configuration', function() {});
 });
 
 export default Router;

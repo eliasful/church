@@ -3,12 +3,6 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 
 export default Ember.Route.extend(ApplicationRouteMixin, {
   session: Ember.inject.service(),
-  beforeModel: function() {
-    if (!this.get('session.isAuthenticated')) {
-      this.transitionTo('login');
-    }
-  },
-
   model() {
     const session = this.get('session');
     if (!session.get('isAuthenticated')) {

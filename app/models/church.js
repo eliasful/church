@@ -8,5 +8,6 @@ export default DS.Model.extend({
   phone: DS.attr('string'),
   responsible: DS.attr('string'),
   email: DS.attr('string'),
-  cpf: DS.attr('string')
+  cpf: DS.attr('string'),
+  hash: DS.attr('string')
 });

@@ -54,7 +54,7 @@ module.exports = function(environment) {
 
   ENV.authenticationURL = ENV.apiBaseUrl + '/login';
   ENV['ember-simple-auth'] = {
-    authenticationRoute: 'home',
+    authenticationRoute: 'login',
     authorizer: 'authorizer:token',
     routeAfterAuthentication: 'home',
     routeIfAlreadyAuthenticated: 'home',
