@@ -17,15 +17,6 @@ module.exports = function(environment) {
         Date: false
       }
     },
-    contentSecurityPolicy: {
-      'default-src': "'self' http://localhost:1337 ",
-      'script-src': "'self' 'unsafe-inline' 'unsafe-eval' ",
-      'font-src': "'self' data: use.typekit.net fonts.gstatic.com ",
-      'connect-src': "'self' http://localhost:1337 ",
-      'img-src': "'self'",
-      'style-src': "'self' 'unsafe-inline' static.addtoany.com  use.typekit.net fonts.googleapis.com ",
-      'frame-src': "static.addtoany.com www.google.com"
-    },
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
@@ -53,6 +44,15 @@ module.exports = function(environment) {
     ENV.appUrl = 'http://18.231.1.82:4200/';
   }
 
+  ENV.contentSecurityPolicy: {
+    'default-src': "'self' " + ENV.apiBaseUrl,
+    'script-src': "'self' 'unsafe-inline' 'unsafe-eval' ",
+    'font-src': "'self' data: use.typekit.net fonts.gstatic.com ",
+    'connect-src': "'self' " + ENV.apiBaseUrl,
+    'img-src': "'self'",
+    'style-src': "'self' 'unsafe-inline' static.addtoany.com  use.typekit.net fonts.googleapis.com ",
+    'frame-src': "static.addtoany.com www.google.com"
+  };
   ENV.authenticationURL = ENV.apiBaseUrl + '/login';
   ENV['ember-simple-auth'] = {
     authenticationRoute: 'login',
