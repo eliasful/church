@@ -44,7 +44,7 @@ module.exports = function(environment) {
     ENV.appUrl = 'http://18.231.1.82:4200/';
   }
 
-  ENV.contentSecurityPolicy: {
+  ENV.contentSecurityPolicy = {
     'default-src': "'self' " + ENV.apiBaseUrl,
     'script-src': "'self' 'unsafe-inline' 'unsafe-eval' ",
     'font-src': "'self' data: use.typekit.net fonts.gstatic.com ",
