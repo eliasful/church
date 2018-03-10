@@ -49,7 +49,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.apiBaseUrl = 'http://18.231.1.82:1337';
+    ENV.appUrl = 'http://18.231.1.82:4200/';
   }
 
   ENV.authenticationURL = ENV.apiBaseUrl + '/login';
