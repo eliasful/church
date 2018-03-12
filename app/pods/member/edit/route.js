@@ -20,6 +20,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
           $('#image').attr('src', e.target.result);
         }
         reader.readAsDataURL(input.files[0]);
+        this.get('model.photo', input.files[0]);
       }
     }
   }

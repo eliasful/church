@@ -31,6 +31,10 @@ Router.map(function() {
     this.route('welcome-page');
   });
   this.route('configuration', function() {});
+  this.route('group', function() {
+    this.route('new');
+    this.route('edit');
+  });
 });
 
 export default Router;

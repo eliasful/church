@@ -24,11 +24,18 @@ export default DS.Model.extend({
   charge: DS.attr('string'),
   ordination: DS.attr('date'),
   baptism: DS.attr('date'),
-  hisWife: DS.belongsTo('member', { inverse: null }),
+  hisWife: DS.belongsTo('member', {
+    inverse: null
+  }),
   married: DS.attr('date'),
-  father: DS.belongsTo('member', { inverse: null }),
-  mother: DS.belongsTo('member', { inverse: null }),
+  father: DS.belongsTo('member', {
+    inverse: null
+  }),
+  mother: DS.belongsTo('member', {
+    inverse: null
+  }),
   children: DS.attr('string'),
   lat: DS.attr('string'),
-  lng: DS.attr('string')
+  lng: DS.attr('string'),
+  photo: DS.attr('string')
 });

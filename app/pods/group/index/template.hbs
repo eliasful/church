@@ -5,13 +5,13 @@
         Início
       {{/link-to}}
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Membros</li>
+    <li class="breadcrumb-item active" aria-current="page">Célula</li>
   </ol>
 </nav>
 <div class="row">
   <div class="col-lg-9 col-md-8">
-    <h2>Membros</h2>
-    <p>Lista de todos os membros da sua igreja</p>
+    <h2>Células</h2>
+    <p>Lista de todos as células da sua igreja</p>
   </div>
 </div>
 
@@ -30,8 +30,8 @@
       </div>
       <div class="col-md-5"></div>
       <div class="col-md-3">
-        {{#link-to 'member.new' class="btn btn-primary btn-block"}}
-          <i class="fa fa-plus"></i> Adicionar Membro
+        {{#link-to 'group.new' class="btn btn-primary btn-block"}}
+          <i class="fa fa-plus"></i> Adicionar Célula
         {{/link-to}}
       </div>
     </div>
@@ -42,26 +42,18 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>Nome</th>
-            <th class="text-center">Celular</th>
-            <th>E-mail</th>
+            <th>Lider</th>
+            <th class="text-center">Celular Lider</th>
             <th>Endereço</th>
+            <th>Membros</th>
             <th class="text-right">Ações</th>
           </tr>
         </thead>
         <tbody>
           {{#each listFilter as |item|}}
             <tr>
-              <td>
-                {{#if item.photo}}
-                  <img id="dropdownMenuButton" src={{item.photo}} style="width: 50px;height: 50px;" class="rounded-circle">  
-                {{else}}
-                  <img id="dropdownMenuButton" src="https://www.samservicos.com.br/wp-content/uploads/2015/11/sem-imagem-avatar.png" style="width: 50px;height: 50px;" class="rounded-circle">
-                {{/if}}
-              </td>
               <td class="align-middle">{{item.name}}</td>
               <td class="align-middle text-center">{{label-mask value=item.celPhone mask="(99) 9 9999-9999"}}</td>
-              <td class="align-middle">{{item.email}}</td>
               <td class="align-middle">
                 {{#if item.address}}
                   {{item.address}}
@@ -76,6 +68,7 @@
                   - {{item.city}}
                 {{/if}}
               </td>
+              <td></td>
               <td class="text-right align-middle">
                 {{#link-to 'member.edit' item  class="btn btn-outline-dark btn-sm"}}
                   <i class="fa fa-edit"></i>
