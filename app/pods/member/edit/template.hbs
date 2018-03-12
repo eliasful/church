@@ -15,8 +15,18 @@
 </nav>
 <div class="row">
   <div class="col-lg-9 col-md-8">
-    <h2>{{model.name}}</h2>
-    <p>Edite esse membro da sua igreja</p>
+    <div class="row">
+      <div class="col-md-1">
+        <input {{action "change" on="change"}} type="file" style="display: none;" id="file" accept="image/*">
+        <img id="image" {{action 'click'}}
+        src="https://www.samservicos.com.br/wp-content/uploads/2015/11/sem-imagem-avatar.png"
+        style="width: 70px;height: 70px;" class="rounded-circle">
+      </div>
+      <div class="col-md-11">
+        <h2>{{model.name}}</h2>
+        <p>Edite esse membro da sua igreja</p>
+      </div>
+    </div>
   </div>
 </div>
 {{form-member model=model transition="transition"}}

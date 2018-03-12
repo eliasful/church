@@ -17,7 +17,7 @@
             </p>
             <hr>
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-7">
                 <div class="form-group">
                   <label>Nome Completo</label>
                   {{input type="text" class="form-control" value=model.name required=true placeholder="ex.: João da Silva"}}
@@ -26,21 +26,12 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-5">
                 <div class="form-group">
                   <label>Celular</label>
                   {{one-way-input-mask model.celPhone mask="(99) 9 9999-9999" update=(action (mut model.celPhone)) class="form-control" required=true placeholder="ex.: (12) 3 4567-8910"}}
                   <div class="invalid-feedback">
                     Informe o Celular.
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Telefone</label>
-                  {{one-way-input-mask model.phone mask="(99) 9999-9999" update=(action (mut model.phone)) class="form-control" required=true placeholder="ex.: (12) 3456-7891"}}
-                  <div class="invalid-feedback">
-                    Informe o Telefone.
                   </div>
                 </div>
               </div>

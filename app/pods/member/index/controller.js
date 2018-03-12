@@ -9,7 +9,33 @@ export default Ember.Controller.extend({
     const filter = this.get('filter');
     const model = this.get('model');
     if (filter) {
-      return model.filter(item => item.get('name').match(/filter/g));
+      return this.store.query('member', {
+        or: [{
+          name: {
+            like: `%${filter}%`
+          }
+        }, {
+          celPhone: {
+            like: `%${filter}%`
+          }
+        }, {
+          address: {
+            like: `%${filter}%`
+          }
+        }, {
+          neighborhood: {
+            like: `%${filter}%`
+          }
+        }, {
+          city: {
+            like: `%${filter}%`
+          }
+        }]
+      }).then(data => {
+        this.set('listFilter', data);
+      });
+    } else {
+      this.set('listFilter', this.get('model'));
     }
   })
 });
