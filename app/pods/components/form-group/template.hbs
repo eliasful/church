@@ -6,20 +6,11 @@
           <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#principal" role="tab" aria-controls="home" aria-expanded="true">
             Dados Principais
           </a>
-          <a {{action 'updateMap'}} class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#address" role="tab" aria-controls="profile" aria-expanded="false">
-            Endereços
+          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#members" role="tab" aria-controls="profile" aria-expanded="false">
+            Membros
           </a>
-          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#personal" role="tab" aria-controls="profile" aria-expanded="false">
-            Dados Pessoais
-          </a>
-          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#documment" role="tab" aria-controls="profile" aria-expanded="false">
-            Documentos
-          </a>
-          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#charges" role="tab" aria-controls="profile" aria-expanded="false">
-            Cargos
-          </a>
-          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#family" role="tab" aria-controls="profile" aria-expanded="false">
-            Familiar
+          <a {{action 'updateMap'}} class="nav-item nav-link" id="nav-address-tab" data-toggle="tab" href="#address" role="tab" aria-controls="profile" aria-expanded="false">
+            Localizações
           </a>
         </nav>
       </div>
@@ -41,62 +32,126 @@
                   {{input-select-each model="member" selected=model.leader}}
                 </div>
               </div>
-              <div class="col-md-4">
-                <div class="form-group">
+              <div class="col-md-4 form-inline">
+                <div class="form-group mt-3">
                   <div class="custom-control custom-checkbox my-4">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
+                    {{input type="checkbox" class="custom-control-input" id="customCheck1" checked=model.addressLeader}}
                     <label class="custom-control-label" for="customCheck1">
                       Usar Mesmo Endereço do Lider?
                     </label>
                   </div>
                 </div>
               </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>Co-Lider</label>
+                  {{input-select-each model="member" selected=model.coleader}}
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>Nome da Célula</label>
+                  {{input type="text" class="form-control" value=model.name placeholder="ex.: Gaditas" required="required"}}
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>Dia da Semana</label>
+                  {{#input-select selected=model.dayWeek}}
+                    <option value="1">Domingo</option>
+                    <option value="2">Segunda-Feira</option>
+                    <option value="3">Terça-Feira</option>
+                    <option value="4">Quarta-Feira</option>
+                    <option value="5">Quinta-Feira</option>
+                    <option value="6">Sexta-Feira</option>
+                    <option value="7">Sábado</option>
+                  {{/input-select}}
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>Horário</label>
+                  {{one-way-input-mask model.hour mask="99:99" update=(action (mut model.hour)) class="form-control" placeholder="ex.: 20:00" required="required"}}
+                </div>
+              </div>
             </div>
           </div>
-          <div class="tab-pane" id="personal" role="tabpanel" aria-labelledby="nav-home-tab" aria-expanded="true">
+          <div class="tab-pane" id="members" role="tabpanel" aria-labelledby="nav-home-tab" aria-expanded="true">
             <div class="row">
               <div class="col-12">
                 <blockquote class="blockquote">
-                  <p class="mb-0">Dados Pessoais</p>
-                  <small class="text-muted">Dados Pessoais do membro em questão</small>
+                  <p class="mb-0">Membros</p>
+                  <small class="text-muted">Membros da célula em questão</small>
                 </blockquote>
               </div>
             </div>
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-10">
                 <div class="form-group">
-                  <label>Data de Nascimento</label>
-                  {{input-date value=model.birthday placeholder="ex.: 01/01/1990"}}
+                  <label>Membro</label>
+                  {{input-select-each model="member" selected=member}}
                 </div>
               </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label>Estado Cívil</label>
-                  {{#input-select selected=model.civilStatus}}
-                    <option value="S">Solteiro</option>
-                    <option value="C">Casado</option>
-                    <option value="D">Divorciado</option>
-                    <option value="V">Viúvo</option>
-                  {{/input-select}}
+              <div class="col-md-2 form-inline">
+                <div class="form-group mt-3">
+                  <button {{action 'addMember' member}} class="btn btn-primary" type="submit" name="button">
+                    <i class="fa fa-plus"></i> Inserir Membro
+                  </button>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-12">
+                <table class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th>Nome Completo</th>
+                      <th class="text-center">Celular</th>
+                      <th>Endereço</th>
+                      <th class="text-right">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each model.members as |member|}}
+                      <tr>
+                        <td>{{member.name}}</td>
+                        <td class="text-center">
+                          {{label-mask value=member.celPhone mask="(99) 9 9999-9999"}}
+                        </td>
+                        <td>{{member.addressComplete}}</td>
+                        <td class="text-right">
+                          <button {{action 'removeMember' member}} type="button" class="btn btn-outline-danger btn-sm">
+                            <i class="fa fa-trash"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    {{else}}
+                      <tr>
+                        <td colspan=4 class="text-center">Nenhum Registro Encontrado</td>
+                      </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="address" role="tabpanel" aria-labelledby="nav-home-tab" aria-expanded="true">
+            <div class="row">
+              <div class="col-md-12">
                 <div class="form-group">
-                  <label>Escolaridade</label>
-                  {{#input-select selected=model.schooling}}
-                    <option value="1">Fundamental - Incompleto</option>
-                    <option value="2">Fundamental - Completo</option>
-                    <option value="3">Médio - Incompleto</option>
-                    <option value="4">Médio - Completo</option>
-                    <option value="5">Superior - Incompleto</option>
-                    <option value="6">Superior - Completo</option>
-                  {{/input-select}}
+                  {{#g-map lat=center.lat lng=center.lng zoom=zoom onLoad=(action "onLoad")
+                    zoomControlOptions=(hash position=google.maps.ControlPosition.LEFT_CENTER) as |g|}}
+                    {{#each markers as |l|}}
+                      {{g.marker
+                        lat=l.lat
+                        lng=l.lng
+                        draggable=true}}
+                    {{/each}}
+                  {{/g-map}}
                 </div>
               </div>
             </div>
           </div>
           <div class="pull-right mb-10">
-            {{#link-to 'member' class="btn btn-light"}}
+            {{#link-to 'group' class="btn btn-light"}}
               <i class="fa fa-arrow-left"></i> Voltar
             {{/link-to}}
             <button class="btn btn-primary" type="submit" name="button">

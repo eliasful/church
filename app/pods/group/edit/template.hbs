@@ -1,1 +1,22 @@
-{{outlet}}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      {{#link-to 'home'}}
+        Início
+      {{/link-to}}
+    </li>
+    <li class="breadcrumb-item">
+      {{#link-to 'group'}}
+        Células
+      {{/link-to}}
+    </li>
+    <li class="breadcrumb-item active">Editar Célula</li>
+  </ol>
+</nav>
+<div class="row">
+  <div class="col-md-11">
+    <h2>{{model.name}}</h2>
+    <p>Edite essa célula da sua igreja</p>
+  </div>
+</div>
+{{form-group model=model transition="transition"}}

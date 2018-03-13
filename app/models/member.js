@@ -37,5 +37,36 @@ export default DS.Model.extend({
   children: DS.attr('string'),
   lat: DS.attr('string'),
   lng: DS.attr('string'),
-  photo: DS.attr('string')
+  photo: DS.attr('string'),
+  group: DS.belongsTo('group', {
+    inverse: null
+  }),
+  addressComplete: Ember.computed('address', function() {
+    let address = "";
+    if (this.get('address')) {
+      address += this.get('address');
+    }
+
+    if (this.get('number')) {
+      address += `, ${this.get('number')}`;
+    }
+
+    if (this.get('complement')) {
+      address += `, ${this.get('complement')}`;
+    }
+
+    if (this.get('neighborhood')) {
+      address += `, ${this.get('neighborhood')}`;
+    }
+
+    if (this.get('city')) {
+      address += ` - ${this.get('city')}`;
+    }
+
+    if (this.get('state')) {
+      address += ` - ${this.get('state')}`;
+    }
+
+    return address;
+  }),
 });

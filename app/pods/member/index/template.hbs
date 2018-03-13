@@ -54,7 +54,7 @@
             <tr>
               <td>
                 {{#if item.photo}}
-                  <img id="dropdownMenuButton" src={{item.photo}} style="width: 50px;height: 50px;" class="rounded-circle">  
+                  <img id="dropdownMenuButton" src={{item.photo}} style="width: 50px;height: 50px;" class="rounded-circle">
                 {{else}}
                   <img id="dropdownMenuButton" src="https://www.samservicos.com.br/wp-content/uploads/2015/11/sem-imagem-avatar.png" style="width: 50px;height: 50px;" class="rounded-circle">
                 {{/if}}
@@ -63,18 +63,7 @@
               <td class="align-middle text-center">{{label-mask value=item.celPhone mask="(99) 9 9999-9999"}}</td>
               <td class="align-middle">{{item.email}}</td>
               <td class="align-middle">
-                {{#if item.address}}
-                  {{item.address}}
-                {{/if}}
-                {{#if item.number}}
-                  , {{item.number}}
-                {{/if}}
-                {{#if item.neighborhood}}
-                  - {{item.neighborhood}}
-                {{/if}}
-                {{#if item.city}}
-                  - {{item.city}}
-                {{/if}}
+                {{item.addressComplete}}
               </td>
               <td class="text-right align-middle">
                 {{#link-to 'member.edit' item  class="btn btn-outline-dark btn-sm"}}

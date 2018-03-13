@@ -9,13 +9,13 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     willTransition() {
       //Se o usuário sair da rota, sem salvar, limpa o objeto
       //para não ficar como sujeira
-      const record = this.modelFor('member.new');
+      const record = this.modelFor('group.new');
       if (record.get('isNew')) {
         return record.destroyRecord();
       }
     },
     transition() {
-      this.transitionTo('member');
+      this.transitionTo('group');
     }
   }
 });

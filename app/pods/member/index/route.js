@@ -19,7 +19,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
             swal('Sucesso!', 'Registro removido com sucesso!', 'success');
           }).catch(() => {
             swal('Ops!', 'Não foi possível remover o registro', 'error');
-          })
+          });
         }
       });
     }

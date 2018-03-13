@@ -1,31 +1,83 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  googleMapsApi: Ember.inject.service(),
+  google: Ember.computed.reads('googleMapsApi.google'),
+  gMap: Ember.inject.service(),
+  zoom: 14,
+  markers: [],
+  map: null,
+  center: {
+    lat: -26.2254235,
+    lng: -52.6873143,
+  },
+  member: null,
   actions: {
+    onLoad({
+      map,
+      publicAPI
+    }) {
+      this.set('map', map);
+      if (this.get('model.leader.lat') && this.get('model.leader.lng') &&
+        this.get('model.addressLeader')) {
+        this.send('setMarker', {
+          lat: Number(this.get('model.leader.lat')),
+          lng: Number(this.get('model.leader.lng'))
+        });
+
+        this.get('model.members').forEach(member => {
+          this.send('setMarker', {
+            lat: Number(member.get('lat')),
+            lng: Number(member.get('lng'))
+          });
+        })
+      }
+    },
     save() {
-      if (this.get('model.birthday')) {
-        this.set('model.birthday', moment(this.get('model.birthday'), 'DD/MM/YYYY').toDate());
-      }
-
-      if (this.get('model.ordination')) {
-        this.set('model.ordination', moment(this.get('model.ordination'), 'DD/MM/YYYY').toDate());
-      }
-
-      if (this.get('model.baptism')) {
-        this.set('model.baptism', moment(this.get('model.baptism'), 'DD/MM/YYYY').toDate());
-      }
-
-      if (this.get('model.married')) {
-        this.set('model.married', moment(this.get('model.married'), 'DD/MM/YYYY').toDate());
-      }
-
       this.get('model').save().then(data => {
-        swal('Sucesso', 'Membro cadastrado com sucesso!', 'success');
+        swal('Sucesso', 'Célula cadastrada com sucesso!', 'success');
         this.sendAction('transition');
       }).catch(err => {
         err = err.errors.lenght > 0 ? err.errors["0"].title : err;
         swal('Ops!', `Não foi possível salvar o registro\n${err}`, 'error');
       });
     },
+    addMember(member) {
+      this.get('model.members').pushObject(member);
+      this.set('member', null);
+    },
+    removeMember(member) {
+      swal({
+        title: "Você deseja mesmo remover esse registro?",
+        text: "Se prosseguir, não será possível reverter esse procedimento!",
+        icon: "warning",
+        buttons: ["Não, cancelar!", "Sim, Remover!"],
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          this.get('model.members').removeObject(member);
+        }
+      });
+    },
+    updateMap() {
+      setTimeout(() => {
+        google.maps.event.trigger(this.get('map'), "resize");
+        this.send('setMarker', this.center);
+      }, 50);
+    },
+    setMarker({
+      lat,
+      lng
+    }) {
+      this.get('map').panTo({
+        lat,
+        lng
+      });
+
+      this.get('markers').pushObject({
+        lat,
+        lng
+      });
+    }
   }
 });

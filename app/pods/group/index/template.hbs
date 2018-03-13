@@ -41,36 +41,30 @@
       <table class="table table-striped table-hover">
         <thead>
           <tr>
-            <th>#</th>
+            <th>Nome</th>
             <th>Lider</th>
             <th class="text-center">Celular Lider</th>
             <th>Endereço</th>
-            <th>Membros</th>
+            <th>Co-Lider</th>
+            <th class="text-center">Membros</th>
             <th class="text-right">Ações</th>
           </tr>
         </thead>
         <tbody>
-          {{#each listFilter as |item|}}
+          {{#each model as |item|}}
             <tr>
               <td class="align-middle">{{item.name}}</td>
-              <td class="align-middle text-center">{{label-mask value=item.celPhone mask="(99) 9 9999-9999"}}</td>
-              <td class="align-middle">
-                {{#if item.address}}
-                  {{item.address}}
-                {{/if}}
-                {{#if item.number}}
-                  , {{item.number}}
-                {{/if}}
-                {{#if item.neighborhood}}
-                  - {{item.neighborhood}}
-                {{/if}}
-                {{#if item.city}}
-                  - {{item.city}}
-                {{/if}}
+              <td class="align-middle">{{item.leader.name}}</td>
+              <td class="align-middle text-center">
+                {{label-mask value=item.leader.celPhone mask="(99) 9 9999-9999"}}
               </td>
-              <td></td>
+              <td class="align-middle">
+                {{item.addressComplete}}
+              </td>
+              <td>{{item.coleader.name}}</td>
+              <td class="text-center">{{item.members.length}}</td>
               <td class="text-right align-middle">
-                {{#link-to 'member.edit' item  class="btn btn-outline-dark btn-sm"}}
+                {{#link-to 'group.edit' item  class="btn btn-outline-dark btn-sm"}}
                   <i class="fa fa-edit"></i>
                 {{/link-to}}
                 <button {{action 'remove' item}} type="button" class="btn btn-outline-danger btn-sm">

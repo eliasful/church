@@ -33,7 +33,9 @@ Router.map(function() {
   this.route('configuration', function() {});
   this.route('group', function() {
     this.route('new');
-    this.route('edit');
+    this.route('edit', {
+      path: 'edit/:id'
+    });
   });
 });
 
