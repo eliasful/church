@@ -36,6 +36,11 @@ Router.map(function() {
     this.route('edit', {
       path: 'edit/:id'
     });
+    this.route('support', {
+      path: 'support/:id'
+    }, function() {
+      this.route('new');
+    });
   });
 });
 

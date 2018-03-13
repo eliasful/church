@@ -5,13 +5,20 @@
         Início
       {{/link-to}}
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Célula</li>
+    <li class="breadcrumb-item">
+      {{#link-to 'group'}}
+        Célula
+      {{/link-to}}
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">
+      Gerenciamento da Célula {{model.name}}
+    </li>
   </ol>
 </nav>
 <div class="row">
   <div class="col-lg-9 col-md-8">
-    <h2>Células</h2>
-    <p>Lista de todos as células da sua igreja</p>
+    <h2>Gerenciamento da Célula {{model.name}}</h2>
+    <p>Lista de gerenciamento das células da sua igreja</p>
   </div>
 </div>
 
@@ -30,8 +37,8 @@
       </div>
       <div class="col-md-5"></div>
       <div class="col-md-3">
-        {{#link-to 'group.new' class="btn btn-primary btn-block"}}
-          <i class="fa fa-plus"></i> Adicionar Célula
+        {{#link-to 'group.support.new' class="btn btn-primary btn-block"}}
+          <i class="fa fa-plus"></i> Gerenciar Célula
         {{/link-to}}
       </div>
     </div>
@@ -41,12 +48,10 @@
       <table class="table table-striped table-hover">
         <thead>
           <tr>
-            <th>Nome</th>
-            <th>Lider</th>
-            <th class="text-center">Celular Lider</th>
-            <th>Endereço</th>
-            <th>Co-Lider</th>
-            <th class="text-center">Membros</th>
+            <th>Data</th>
+            <th>Ministração</th>
+            <th class="text-center">Membros Presentes</th>
+            <th class="text-center">Visitantes</th>
             <th class="text-right">Ações</th>
           </tr>
         </thead>
