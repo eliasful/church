@@ -140,10 +140,16 @@
                   {{#g-map lat=center.lat lng=center.lng zoom=zoom onLoad=(action "onLoad")
                     zoomControlOptions=(hash position=google.maps.ControlPosition.LEFT_CENTER) as |g|}}
                     {{#each markers as |l|}}
-                      {{g.marker
+                      {{#g.marker
                         lat=l.lat
                         lng=l.lng
-                        draggable=true}}
+                        draggable=false as |m|}}
+                        {{#m.infoWindow isOpen=l.active as |i|}}
+                          <div class="text-center">
+                            <div>Lider</div>
+                          </div>
+                        {{/m.infoWindow}}
+                      {{/g.marker}}
                     {{/each}}
                   {{/g-map}}
                 </div>

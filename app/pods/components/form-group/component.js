@@ -22,14 +22,17 @@ export default Ember.Component.extend({
         this.get('model.addressLeader')) {
         this.send('setMarker', {
           lat: Number(this.get('model.leader.lat')),
-          lng: Number(this.get('model.leader.lng'))
+          lng: Number(this.get('model.leader.lng')),
+          active: true
         });
 
         this.get('model.members').forEach(member => {
-          this.send('setMarker', {
-            lat: Number(member.get('lat')),
-            lng: Number(member.get('lng'))
-          });
+          if (member.get('id') != this.get('model.leader.id')) {
+            this.send('setMarker', {
+              lat: Number(member.get('lat')),
+              lng: Number(member.get('lng'))
+            });
+          }
         })
       }
     },
@@ -62,12 +65,13 @@ export default Ember.Component.extend({
     updateMap() {
       setTimeout(() => {
         google.maps.event.trigger(this.get('map'), "resize");
-        this.send('setMarker', this.center);
+        this.get('map').panTo(this.center);
       }, 50);
     },
     setMarker({
       lat,
-      lng
+      lng,
+      active
     }) {
       this.get('map').panTo({
         lat,
@@ -76,7 +80,8 @@ export default Ember.Component.extend({
 
       this.get('markers').pushObject({
         lat,
-        lng
+        lng,
+        active
       });
     }
   }
